@@ -6,6 +6,7 @@ export class Movie {
     public title: string;
     public description: string;
     public recommended: boolean;
-    public genre: Genre
+    public genre: Genre;
+    public userRating: number;
 
 }

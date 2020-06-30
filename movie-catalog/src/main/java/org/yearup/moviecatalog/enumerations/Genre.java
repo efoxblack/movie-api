@@ -2,7 +2,7 @@ package org.yearup.moviecatalog.enumerations;
 
 public enum Genre {
 
-    Action("ACTION"),
+    Action("Action"),
     Adventure("Adventure"),
     Animation("Animation"),
     Biography("Biography"),

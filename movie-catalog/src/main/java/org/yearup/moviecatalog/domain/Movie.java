@@ -22,9 +22,11 @@ public class Movie {
     private String title;
     private String description;
     private Boolean recommended;
+    private double userRating;
 
     @Enumerated(EnumType.STRING)
     private Genre genre;
+
 
     public Movie() {
     }

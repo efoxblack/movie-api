@@ -30,6 +30,14 @@ export class ViewMovieComponent implements OnInit {
       )
   }
 
+  submitUserRating() {
+    this.serv.editMovie(this.id, this.movie).subscribe(
+      res => {
+        this.router.navigate(['movies-list'])
+      }
+    )
+  }
+
   goBackToList() {
     this.router.navigate(['movies-list']);
   }

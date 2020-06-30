@@ -4,6 +4,32 @@
       <h1 class="display-4">Movie title: <br> {{ movie.title }}</h1>
       <p class="lead">Movie description: <br> {{ movie.description }}</p>
       <hr class="my-4">
+      <form>
+        <div class="form-group">
+          <label for="users-rating">What would you rate the movie?</label>
+          <input type="number" class="form-control" [(ngModel)]="movie.userRating" name="users-rating">
+          <small id="user-rating-help" class="form-text text-muted">Valid ratings are from .01 to 1</small>
+        </div>
+        <span class="score">
+          <div class="score-wrap">
+              <span class="stars-active" style="width:{{ movie.userRating | percent }}">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+              </span>
+              <span class="stars-inactive">
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+              </span>
+          </div>
+        </span>
+        <button type="submit" class="btn btn-success" (click)="submitUserRating()">Submit Rating</button>
+      </form>
       <p>Is this movie recommended? <br> {{ movie.recommended }}</p>
       <button type="button" class="btn btn-primary" (click)="goBackToList()" id="goBack">Go Back</button>
     </div>
