@@ -14,6 +14,12 @@ export class ViewMovieComponent implements OnInit {
 
   id: number;
 
+  wholeNum: number;
+
+  toPercent: number;
+
+  thumbLabel = true;
+
   constructor(
     private router: Router,
     private serv: MovieDataService,
@@ -41,4 +47,11 @@ export class ViewMovieComponent implements OnInit {
   goBackToList() {
     this.router.navigate(['movies-list']);
   }
+
+  convertToPercent() {
+    this.wholeNum = this.movie.userRating * 20;
+    this.toPercent = this.wholeNum / 100;
+    // console.log(this.toPercent);
+  }
+
 }

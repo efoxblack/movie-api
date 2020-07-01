@@ -7,12 +7,12 @@
       <form>
         <div class="form-group">
           <label for="users-rating">What would you rate the movie?</label>
-          <input type="number" class="form-control" [(ngModel)]="movie.userRating" name="users-rating">
-          <small id="user-rating-help" class="form-text text-muted">Valid ratings are from .01 to 1</small>
+          <br>
+          <mat-slider min="0" max="5" step="1" value="0" [thumbLabel] = "thumbLabel" [(ngModel)] = "movie.userRating" name="uRating" (click)="convertToPercent()"></mat-slider>
         </div>
         <span class="score">
           <div class="score-wrap">
-              <span class="stars-active" style="width:{{ movie.userRating | percent }}">
+              <span class="stars-active" style="width:{{ toPercent | percent }}">
                   <i class="fa fa-star" aria-hidden="true"></i>
                   <i class="fa fa-star" aria-hidden="true"></i>
                   <i class="fa fa-star" aria-hidden="true"></i>

@@ -3,6 +3,7 @@ import { Movie } from 'src/app/model/movie';
 import { Router } from '@angular/router';
 import { MovieDataService } from 'src/app/service/movie-data.service';
 import { Genre } from 'src/app/model/genre.enum';
+import { Rating } from 'src/app/model/rating.enum';
 
 @Component({
   selector: 'app-add-movie',
@@ -14,6 +15,8 @@ export class AddMovieComponent implements OnInit {
   movie = new Movie();
 
   public genreEnum = Genre;
+  
+  public ratingEnum = Rating;
 
   constructor(
     private router: Router,

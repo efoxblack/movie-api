@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.yearup.moviecatalog.enumerations.Genre;
+import org.yearup.moviecatalog.enumerations.Rating;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,10 +23,14 @@ public class Movie {
     private String title;
     private String description;
     private Boolean recommended;
+    private String cast;
     private double userRating;
 
     @Enumerated(EnumType.STRING)
     private Genre genre;
+
+    @Enumerated(EnumType.STRING)
+    private Rating rating;
 
 
     public Movie() {

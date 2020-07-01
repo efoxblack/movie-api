@@ -7,7 +7,9 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Recommended</th>
+                <th>Cast</th>
                 <th>Genre</th>
+                <th>Rating</th>                
                 <th>Edit</th>
                 <th>View</th>
                 <th>Delete</th>
@@ -19,7 +21,9 @@
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.description }}</td>
                 <td>{{ movie.recommended }}</td>
+                <td>{{ movie.cast }}</td>
                 <td>{{ movie.genre }}</td>
+                <td>{{ movie.rating }}</td>
                 <td><button class="btn btn-outline-warning" (click)="editMovie(movie.id)">Edit</button></td>
                 <td><button class="btn btn-outline-info" (click)="viewMovie(movie.id)">View</button></td>
                 <td><button class="btn btn-danger" (click)="deleteMovie(movie.id)">Delete</button></td>

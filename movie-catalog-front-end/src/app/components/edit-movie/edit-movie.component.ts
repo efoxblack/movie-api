@@ -3,6 +3,7 @@ import { Movie } from 'src/app/model/movie';
 import { MovieDataService } from 'src/app/service/movie-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Genre } from 'src/app/model/genre.enum';
+import { Rating } from 'src/app/model/rating.enum';
 
 @Component({
   selector: 'app-edit-movie',
@@ -16,6 +17,8 @@ export class EditMovieComponent implements OnInit {
   id: number;
 
   public genreEnum = Genre;
+  
+  public ratingEnum = Rating;
 
   constructor(
     private serv: MovieDataService,

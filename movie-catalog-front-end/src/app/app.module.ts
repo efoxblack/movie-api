@@ -9,6 +9,8 @@ import { ListMoviesComponent } from './components/list-movies/list-movies.compon
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { ViewMovieComponent } from './components/view-movie/view-movie.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ViewMovieComponent } from './components/view-movie/view-movie.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, 
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
