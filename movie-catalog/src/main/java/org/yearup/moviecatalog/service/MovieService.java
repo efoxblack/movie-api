@@ -3,6 +3,7 @@ package org.yearup.moviecatalog.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yearup.moviecatalog.domain.Movie;
+import org.yearup.moviecatalog.exception.ResourceNotFoundException;
 import org.yearup.moviecatalog.repository.MovieRepository;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class MovieService {
     }
 
     public Optional<Movie> getMovieById(Long id) {
+        verifyMovie(id);
         return movieRepository.findById(id);
     }
 
@@ -30,6 +32,7 @@ public class MovieService {
     }
 
     public void updateMovie(Movie movie, Long id) {
+        verifyMovie(id);
         for (Movie movie1: movieRepository.findAll()) {
             if(movie1.getId().equals(id)) {
                 movieRepository.save(movie);
@@ -38,7 +41,16 @@ public class MovieService {
     }
 
     public void deleteMovieById(Long id) {
+        verifyMovie(id);
         movieRepository.deleteById(id);
+    }
+
+    public void verifyMovie(Long id) throws ResourceNotFoundException {
+        Optional<Movie> movie = movieRepository.findById(id);
+        if (movie.isEmpty()) {
+            throw new ResourceNotFoundException("Movie with id " + id + " not found");
+
+        }
     }
 
 }

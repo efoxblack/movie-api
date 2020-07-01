@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.yearup.moviecatalog.domain.Movie;
 import org.yearup.moviecatalog.service.MovieService;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class MovieController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/movies")
-    public ResponseEntity<?> addMovie(@RequestBody Movie movie) {
+    public ResponseEntity<?> addMovie(@Valid @RequestBody Movie movie) {
         movieService.addMovie(movie);
         HttpHeaders httpHeaders = new HttpHeaders();
         URI newMovieUri = ServletUriComponentsBuilder
@@ -46,7 +47,7 @@ public class MovieController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/movies/{id}")
-    public ResponseEntity<?> updateMovieById(@RequestBody Movie movie, @PathVariable Long id) {
+    public ResponseEntity<?> updateMovieById(@Valid @RequestBody Movie movie, @PathVariable Long id) {
         movieService.updateMovie(movie, id);
         return new ResponseEntity<>(movie, HttpStatus.ACCEPTED);
     }
