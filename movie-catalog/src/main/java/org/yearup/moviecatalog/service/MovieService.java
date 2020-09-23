@@ -2,8 +2,10 @@ package org.yearup.moviecatalog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yearup.moviecatalog.domain.Account;
 import org.yearup.moviecatalog.domain.Movie;
 import org.yearup.moviecatalog.exception.ResourceNotFoundException;
+import org.yearup.moviecatalog.repository.AccountRepository;
 import org.yearup.moviecatalog.repository.MovieRepository;
 
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ public class MovieService {
     @Autowired
     private MovieRepository movieRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     public List<Movie> getAllMovies() {
         List<Movie> movieList = new ArrayList<>();
         movieRepository.findAll().forEach(movieList::add);
@@ -27,8 +32,13 @@ public class MovieService {
         return movieRepository.findById(id);
     }
 
-    public void addMovie(Movie movie) {
-        movieRepository.save(movie);
+    public void addMovie(Movie movie, Long accountId) {
+        for (Account account1 : accountRepository.findAll()) {
+            if (account1.getUserId().equals(accountId)) {
+                movie.setAccount(account1);
+                movieRepository.save(movie);
+            }
+        }
     }
 
     public void updateMovie(Movie movie, Long id) {
